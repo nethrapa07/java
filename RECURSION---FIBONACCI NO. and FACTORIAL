@@ -1,0 +1,28 @@
+//Fibonacci no.
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      System.out.println(fact(7));
+    }
+    public static int fact(int n){
+      if(n==0||n==1)
+      return n;
+      return fact(n-1)+fact(n-2);
+    }
+}
+
+//Factorial
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      System.out.println(fact(7));
+    }
+    public static int fact(int n){
+      if(n==0||n==1)
+      return 1;
+      return n*fact(n-1);
+    }
+}
