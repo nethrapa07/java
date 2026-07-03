@@ -1,0 +1,54 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
+      int v=sc.nextInt();
+      int e=sc.nextInt();
+      @SuppressWarnings("unchecked")
+      List<Integer> a[]=new ArrayList[v];
+      for(int i=0;i<v;i++)
+        a[i]=new ArrayList<>();
+      
+      for(int i=0;i<e;i++){
+        int s=sc.nextInt();
+        int d=sc.nextInt();
+        a[s].add(d);
+         a[d].add(s);
+      }
+      bfs(a,0,v);
+      boolean visited[]=new boolean[v];
+      System.out.println();
+      dfs(a,0,visited);
+    }
+    public static void bfs(List<Integer> a[],int s,int v){
+      boolean vi[]=new boolean[v];
+      Queue<Integer> q=new LinkedList<>();
+      q.offer(s);
+      vi[s]=true;
+      while(!q.isEmpty()){
+        int t=q.poll();
+      System.out.print(t+" ");
+        for(int i:a[t]){
+          if(!vi[i]){
+            vi[i]=true;
+            q.offer(i);
+          }
+        }
+      }
+
+
+   }
+   public static void dfs(List<Integer> a[],int s,boolean visited[]){
+visited[s]=true;
+System.out.print(s+" ");
+for(int i:a[s]){
+          if(!visited[i]){
+            
+           dfs(a,i,visited);
+          }
+   }
+}
+}
+
+
