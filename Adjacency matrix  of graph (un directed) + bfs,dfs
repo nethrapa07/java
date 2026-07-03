@@ -1,0 +1,68 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
+    int v=sc.nextInt();
+    int e=sc.nextInt();
+    int adj[][]=new int[v][v];
+    for(int i=0;i<e;i++){
+        int s=sc.nextInt();
+        int d=sc.nextInt();
+        adj[s][d]=1;
+        adj[d][s]=1;
+    }
+    //for printing
+    for(int i=0;i<v;i++){
+        for(int j=0;j<v;j++){
+            System.out.print(adj[i][j]+" ");
+        }
+        System.out.println();
+    }
+    bfs(adj,0,v);
+    System.out.println();
+    boolean visited[]=new boolean[v];
+    dfs(adj,0,visited,v);
+    }
+    public static void bfs(int adj[][],int s,int v) {
+      boolean visited[]=new boolean[v];
+      Queue <Integer> q=new LinkedList<>();
+      q.offer(s);
+      visited[s]=true;
+      while(!q.isEmpty()){
+          int t=q.poll();
+          System.out.print(t+" ");
+          for(int i=0;i<v;i++){
+              if(!visited[i]&&adj[t][i]==1){
+                q.offer(i);
+                visited[i]=true;
+              }
+          }
+      }
+    }
+    public static void dfs(int adj[][],int s,boolean visited[],int v){
+        visited[s]=true;
+        System.out.print(s+" ");
+        for(int i=0;i<v;i++){
+            if(!visited[i]&&adj[s][i]==1)
+            dfs(adj,i,visited,v);
+        }
+    }
+   
+}
+input:
+4
+5
+0 2
+1 2
+0 3
+1 0
+2 1
+
+
+Output:
+0 1 1 1 
+1 0 1 0 
+1 1 0 0 
+1 0 0 0 
+0 1 2 3 
+0 1 2 3 
